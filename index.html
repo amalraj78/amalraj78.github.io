@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amalraj JOHN CHARLES VARATHARAJAN — Ingénieur Systèmes Embarqués</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=Space+Mono:ital,wght@0,400;0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8f8f5;
+  --bg2:#f0f0ec;
+  --text:#171714;
+  --muted:#8a8a82;
+  --border:#e0e0d8;
+  --accent:#2d5a27;
+  --accent-l:#eef5ed;
+  --mono:'Space Mono',monospace;
+  --serif:'Playfair Display',serif;
+  --sans:'DM Sans',sans-serif;
+}
+html,body{height:100%;overflow:hidden}
+body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:300;display:flex}
+
+/* SIDEBAR — nav only */
+.sidebar{
+  width:200px;min-width:200px;height:100vh;
+  background:var(--text);color:var(--bg);
+  display:flex;flex-direction:column;
+  padding:2rem 1.5rem;
+  position:relative;
+  z-index:10;
+}
+.sb-logo{
+  font-family:var(--mono);font-size:0.7rem;
+  color:rgba(255,255,255,0.3);letter-spacing:0.08em;
+  margin-bottom:3rem;text-decoration:none;
+}
+/* AVATAR */
+.sb-avatar{
+  width:72px;height:72px;border-radius:50%;
+  background:rgba(255,255,255,0.07);
+  border:1px solid rgba(255,255,255,0.12);
+  display:flex;align-items:center;justify-content:center;
+  margin-bottom:1.25rem;
+  position:relative;overflow:hidden;
+  flex-shrink:0;
+}
+.sb-avatar-initials{
+  font-family:var(--serif);font-size:1.5rem;font-weight:400;font-style:italic;
+  color:rgba(255,255,255,0.7);letter-spacing:0.02em;
+  user-select:none;
+}
+.sb-avatar-img{
+  width:100%;height:100%;object-fit:cover;border-radius:50%;
+  position:absolute;inset:0;
+  display:none;
+}
+.sb-avatar-ring{
+  position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.08);
+  pointer-events:none;
+}
+.sb-name{
+  font-family:var(--serif);font-size:1.6rem;
+  font-weight:400;line-height:1.2;margin-bottom:0.4rem;
+  color:#fff;
+}
+.sb-name em{font-style:italic;display:block;color:rgba(255,255,255,0.55)}
+.sb-role{
+  font-family:var(--mono);font-size:0.58rem;
+  color:rgba(255,255,255,0.3);letter-spacing:0.1em;
+  text-transform:uppercase;margin-bottom:1.5rem;line-height:1.6;
+}
+.sb-badge{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  background:rgba(255,255,255,0.06);
+  border:1px solid rgba(255,255,255,0.1);
+  border-radius:2px;padding:0.28rem 0.6rem;
+  font-family:var(--mono);font-size:0.58rem;
+  color:rgba(255,255,255,0.45);letter-spacing:0.06em;
+  margin-bottom:2rem;
+}
+.sb-badge::before{content:'';width:5px;height:5px;border-radius:50%;background:#4ade80;flex-shrink:0}
+
+/* NAV */
+.sb-nav{display:flex;flex-direction:column;gap:0;flex:1;justify-content:center}
+.sb-link{
+  font-family:var(--mono);font-size:0.68rem;
+  color:rgba(255,255,255,0.25);letter-spacing:0.1em;
+  text-transform:uppercase;text-decoration:none;
+  padding:0.75rem 0;
+  border-bottom:1px solid rgba(255,255,255,0.05);
+  display:flex;justify-content:space-between;align-items:center;
+  transition:color 0.2s;cursor:pointer;
+}
+.sb-link:hover,.sb-link.active{color:#fff}
+.sb-link.active::after{content:'→';font-size:0.7rem}
+
+/* SIDEBAR BOTTOM */
+.sb-bottom{margin-top:auto;display:flex;flex-direction:column;gap:0.6rem}
+.sb-contact{
+  font-family:var(--mono);font-size:0.62rem;
+  color:rgba(255,255,255,0.3);letter-spacing:0.04em;
+  text-decoration:none;transition:color 0.2s;
+}
+.sb-contact:hover{color:rgba(255,255,255,0.7)}
+.sb-cv{
+  margin-top:1rem;font-family:var(--mono);font-size:0.65rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.65rem;text-align:center;
+  border:1px solid rgba(255,255,255,0.2);color:rgba(255,255,255,0.6);
+  text-decoration:none;transition:all 0.2s;
+}
+.sb-cv:hover{background:rgba(255,255,255,0.08);color:#fff}
+
+/* MAIN */
+.main{
+  flex:1;height:100vh;overflow-y:auto;
+  scroll-behavior:smooth;
+}
+.main::-webkit-scrollbar{width:4px}
+.main::-webkit-scrollbar-track{background:transparent}
+.main::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px}
+
+/* SECTIONS */
+.sec{padding:4rem 3.5rem;border-bottom:1px solid var(--border);min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+
+/* HERO IDENTITY BLOCK */
+.hero-identity{
+  display:flex;align-items:center;gap:1.75rem;
+  padding-bottom:2.5rem;
+  border-bottom:1px solid var(--border);
+  margin-bottom:0;
+}
+.hero-avatar{
+  width:80px;height:80px;border-radius:50%;
+  background:var(--text);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+.hero-avatar-initials{
+  font-family:var(--serif);font-size:1.6rem;font-weight:400;font-style:italic;
+  color:rgba(255,255,255,0.75);user-select:none;
+}
+.hero-avatar-img{
+  width:100%;height:100%;object-fit:cover;
+  position:absolute;inset:0;display:none;
+}
+.hero-avatar-ring{
+  position:absolute;inset:-4px;border-radius:50%;
+  border:1px solid var(--border);pointer-events:none;
+}
+.hero-id-text{}
+.hero-name-big{
+  font-family:var(--serif);font-size:1.9rem;font-weight:400;
+  line-height:1.15;letter-spacing:-0.02em;margin-bottom:0.3rem;
+}
+.hero-name-big em{font-style:italic;color:var(--accent)}
+.hero-role-line{
+  font-family:var(--mono);font-size:0.62rem;color:var(--muted);
+  letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.65rem;
+}
+.hero-badge-dispo{
+  display:inline-flex;align-items:center;gap:0.4rem;
+  border:1px solid var(--accent);border-radius:2px;
+  padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.58rem;
+  color:var(--accent);letter-spacing:0.06em;background:var(--accent-l);
+}
+.hero-badge-dispo::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+/* HERO */
+#s-hero{background:var(--bg);justify-content:flex-end;padding-bottom:4rem}
+.hero-tag{
+  font-family:var(--mono);font-size:0.65rem;
+  color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;
+  margin-bottom:1.75rem;
+}
+.hero-h{
+  font-family:var(--serif);
+  font-size:clamp(3rem,5.5vw,5rem);
+  font-weight:400;line-height:1.05;letter-spacing:-0.02em;
+  margin-bottom:2.5rem;
+}
+.hero-h em{font-style:italic;color:var(--accent)}
+.hero-desc{
+  font-size:1rem;color:var(--muted);max-width:48ch;
+  line-height:1.8;margin-bottom:3rem;
+}
+.hero-chips{display:flex;gap:0.5rem;flex-wrap:wrap}
+.hchip{
+  font-family:var(--mono);font-size:0.6rem;
+  padding:0.3rem 0.65rem;border:1px solid var(--border);
+  color:var(--muted);letter-spacing:0.06em;border-radius:2px;
+}
+.hchip.green{border-color:var(--accent);color:var(--accent);background:var(--accent-l)}
+
+/* LABELS */
+.sec-lbl{
+  font-family:var(--mono);font-size:0.65rem;color:var(--muted);
+  letter-spacing:0.15em;text-transform:uppercase;
+  display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;
+}
+.sec-lbl::before{content:'';width:1.5rem;height:1px;background:var(--muted)}
+.sec-h{
+  font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);
+  font-weight:400;line-height:1.1;margin-bottom:3rem;
+}
+.sec-h em{font-style:italic;color:var(--accent)}
+
+/* ABOUT */
+.ab-grid{display:grid;grid-template-columns:1fr;gap:0;max-width:700px}
+.ab-p{font-size:0.95rem;color:var(--muted);line-height:1.85;margin-bottom:1.25rem}
+.ab-p strong{color:var(--text);font-weight:500}
+.ab-facts{
+  display:grid;grid-template-columns:1fr 1fr;
+  gap:0;margin-top:2rem;border-top:1px solid var(--border);
+}
+.af{padding:1rem 0;border-bottom:1px solid var(--border);padding-right:2rem}
+.af-k{font-family:var(--mono);font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:0.3rem}
+.af-v{font-size:0.85rem;color:var(--text)}
+.af-v a{color:var(--accent);text-decoration:none}
+
+/* SKILLS */
+.sk-outer{display:flex;flex-direction:column;gap:2rem;max-width:700px}
+.sk-grp{}
+.sk-grp-title{
+  font-family:var(--mono);font-size:0.62rem;color:var(--muted);
+  letter-spacing:0.12em;text-transform:uppercase;
+  margin-bottom:0.85rem;padding-bottom:0.5rem;
+  border-bottom:1px solid var(--border);
+}
+.sk-pills{display:flex;flex-wrap:wrap;gap:0.4rem}
+.pill{
+  font-family:var(--mono);font-size:0.62rem;
+  padding:0.3rem 0.65rem;border:1px solid var(--border);
+  color:var(--muted);letter-spacing:0.04em;border-radius:2px;
+  transition:all 0.2s;cursor:default;
+}
+.pill:hover{border-color:var(--text);color:var(--text)}
+.pill.strong{border-color:var(--accent);color:var(--accent);background:var(--accent-l)}
+
+/* PROJECTS */
+.pj-list{display:flex;flex-direction:column;gap:0;max-width:700px}
+.pj{
+  padding:1.75rem 0;border-bottom:1px solid var(--border);
+  display:grid;grid-template-columns:44px 1fr;gap:1.5rem;
+  cursor:default;transition:padding 0.15s;
+}
+.pj:first-child{border-top:1px solid var(--border)}
+.pj:hover{padding-left:0.5rem}
+.pj-n{font-family:var(--mono);font-size:0.62rem;color:var(--muted);padding-top:0.2rem}
+.pj-tags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.5rem}
+.pjtag{
+  font-family:var(--mono);font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.15rem 0.45rem;border:1px solid var(--border);color:var(--muted);
+}
+.pjtag.hi{border-color:var(--accent);color:var(--accent)}
+.pj-t{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:0.4rem}
+.pj-d{font-size:0.82rem;color:var(--muted);line-height:1.65}
+
+/* CONTACT */
+.ct-wrap{max-width:700px}
+.ct-intro{font-size:0.95rem;color:var(--muted);line-height:1.8;margin-bottom:2.5rem}
+.ct-links{display:flex;flex-direction:column;gap:0;margin-bottom:3rem}
+.ctlink{
+  display:flex;justify-content:space-between;align-items:center;
+  padding:0.85rem 0;border-bottom:1px solid var(--border);
+  text-decoration:none;color:var(--text);font-size:0.88rem;transition:color 0.2s;
+}
+.ctlink:first-child{border-top:1px solid var(--border)}
+.ctlink:hover{color:var(--accent)}
+.ctlink span{font-family:var(--mono);font-size:0.65rem;color:var(--muted)}
+form.cf{display:flex;flex-direction:column;gap:0}
+.cfg{margin-bottom:1rem}
+.cfl{display:block;font-family:var(--mono);font-size:0.58rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted);margin-bottom:0.4rem}
+.cfi,.cft{
+  width:100%;background:transparent;border:none;
+  border-bottom:1px solid var(--border);
+  padding:0.6rem 0;color:var(--text);font-family:var(--sans);font-size:0.88rem;
+  outline:none;transition:border-color 0.2s;
+}
+.cfi:focus,.cft:focus{border-bottom-color:var(--accent)}
+.cft{resize:vertical;min-height:90px}
+.cfbtn{
+  margin-top:0.5rem;font-family:var(--mono);font-size:0.65rem;
+  letter-spacing:0.08em;text-transform:uppercase;
+  padding:0.75rem;background:var(--text);color:var(--bg);
+  border:none;cursor:pointer;width:100%;transition:opacity 0.2s;
+}
+.cfbtn:hover{opacity:0.75}
+#ok4{display:none;margin-top:0.75rem;font-family:var(--mono);font-size:0.7rem;color:var(--accent);text-align:center;padding:0.75rem;border:1px solid rgba(45,90,39,0.3);background:var(--accent-l)}
+
+footer{padding:4rem 3.5rem 3rem;border-top:1px solid var(--border)}
+.ft-line{font-family:var(--mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.04em}
+
+@media(max-width:900px){
+  html,body{overflow:auto;height:auto;display:block}
+  .sidebar{width:100%;height:auto;min-height:auto;flex-direction:row;flex-wrap:wrap;gap:1rem;padding:1.5rem;position:static}
+  .sb-name{font-size:1.2rem}
+  .sb-nav{flex-direction:row;flex-wrap:wrap;gap:0.5rem}
+  .sb-link{padding:0.3rem 0;border-bottom:none;font-size:0.6rem}
+  .sb-bottom{margin-top:0}
+  .sb-cv,.sb-logo{display:none}
+  .main{height:auto;overflow:visible}
+  .sec{min-height:auto;padding:4rem 1.5rem}
+  .ab-facts{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar">
+  <a href="#" class="sb-logo">// portfolio</a>
+  <nav class="sb-nav">
+    <a class="sb-link active" onclick="scrollTo('s-hero')">Accueil</a>
+    <a class="sb-link" onclick="scrollTo('s-about')">À propos</a>
+    <a class="sb-link" onclick="scrollTo('s-skills')">Compétences</a>
+    <a class="sb-link" onclick="scrollTo('s-projects')">Projets</a>
+    <a class="sb-link" onclick="scrollTo('s-contact')">Contact</a>
+  </nav>
+  <div class="sb-bottom">
+    <div style="height:1px;background:rgba(255,255,255,0.07);margin-bottom:0.75rem"></div>
+    <a href="mailto:votre.email@example.com" class="sb-contact">votre.email@example.com</a>
+    <a href="https://linkedin.com/in/votre-profil" target="_blank" class="sb-contact">LinkedIn ↗</a>
+    <label class="sb-cv" style="cursor:pointer;display:block">
+      Changer la photo
+      <input type="file" accept="image/*" id="photo-input" style="display:none" onchange="loadPhoto(event)">
+    </label>
+    <a href="#" class="sb-cv">Télécharger le CV ↗</a>
+  </div>
+</aside>
+
+<!-- MAIN CONTENT -->
+<main class="main" id="main-scroll">
+
+  <section class="sec" id="s-hero">
+    <div class="hero-identity">
+      <div class="hero-avatar">
+        <span class="hero-avatar-initials">A JCV</span>
+        <img class="hero-avatar-img" id="avatar-img" src="" alt="Photo de profil">
+        <div class="hero-avatar-ring"></div>
+      </div>
+      <div class="hero-id-text">
+        <h1 class="hero-name-big">Amalraj <em> John Charles Varatharajan</em></h1>
+        <p class="hero-role-line">Ingénieur Systèmes Embarqués /  Electronique / Informatique · ENSEA · Île-de-France</p>
+        <span class="hero-badge-dispo">Disponible immédiatement</span>
+      </div>
+    </div>
+    <p class="hero-tag" style="margin-top:3rem">ENSEA · Cergy · 2025</p>
+    <h2 class="hero-h">Ingénieur<br><em>ENSEA</em></h2>
+    <p class="hero-desc">Spécialisé en systèmes embarqués complexes, avec une expérience pratique sur FPGA, VHDL, Linux embarqué et IA embarquée. Passionné par la création de solutions innovantes à l'intersection du matériel et du logiciel.</p>
+    <div class="hero-chips">
+      <span class="hchip">FPGA / VHDL</span>
+      <span class="hchip">C / C++ / Python</span>
+      <span class="hchip">Linux Embarqué</span>
+      <span class="hchip">IA Embarquée</span>
+      <span class="hchip">Île-de-France</span>
+    </div>
+  </section>
+
+  <section class="sec" id="s-about">
+    <p class="sec-lbl">01 — À propos</p>
+    <h2 class="sec-h">Du silicium<br><em>à l'intelligence.</em></h2>
+    <div class="ab-grid">
+      <p class="ab-p">Diplômé de <strong>l'ENSEA</strong>, spécialisé en systèmes embarqués complexes. Mon Proof of Concept chez <strong>NKAD Printers</strong> : un système embarqué d'impression 3D métal sur carte FPGA ALINX, analyse laser temps réel, caméras thermiques, G-code généré par IA, et modèle ML déployé directement sur FPGA.</p>
+      <p class="ab-p">J'ai également développé des compétences en développement <strong>web, mobile Android, Java, et Raspberry Pi</strong>, et je développe actuellement une application mobile.</p>
+      <div class="ab-facts">
+        <div class="af"><p class="af-k">Formation</p><p class="af-v">2022-2025 :<br><strong>Diplôme Ingénieur ENSEA</strong> · Cergy<br>
+          <br>2020-2022 :<br><strong>DUT GEII, CY Paris Université</strong> · Neuville-Sur-Oise</p></br></div> 
+        <div class="af"><p class="af-k">Alternance</p><p class="af-v">2022-2025 :<br><strong>NKAD Printers</strong> · Buchelay</p></div>
+        <div class="af"><p class="af-k">Stage 8 semaines</p><p class="af-v">2020 : <br><strong>ECAM-EPMI</strong> · Cergy</p></div>
+        <div class="af"><p class="af-k">Langues</p><p class="af-v">Français · Anglais (TOEIC 940)</p></div>
+        <div class="af"><p class="af-k">Localisation</p><p class="af-v">Île-de-France</p></div>
+        <div class="af"><p class="af-k">LinkedIn</p><p class="af-v"><a href="#">Amalraj JOHN CHARLES VARATHARAJAN ↗</a></p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="s-skills">
+    <p class="sec-lbl">02 — Compétences</p>
+    <h2 class="sec-h">Stack &amp;<br><em>savoir-faire.</em></h2>
+    <div class="sk-outer">
+      <div class="sk-grp">
+        <p class="sk-grp-title">Systèmes Embarqués & IA</p>
+        <div class="sk-pills">
+          <span class="pill strong">VHDL</span><span class="pill strong">FPGA Xilinx</span><span class="pill strong">Outils AMD Vivado / Vitis</span><span class="pill strong">STM32</span><span class="pill strong">Raspberry Pi</span><span class="pill">Linux Embarqué</span><span class="pill">PetaLinux</span><span class="pill">RFID</span><span class="pill">Machine Learning</span>
+        </div>
+      </div>
+      <div class="sk-grp">
+        <p class="sk-grp-title">Langages</p>
+        <div class="sk-pills">
+          <span class="pill strong">C / C++</span><span class="pill strong">Python</span><span class="pill">Java</span><span class="pill">HTML</span><span class="pill">Node.js</span><span class="pill">CSS</span><span class="pill">JavaScript</span>
+        </div>
+      </div>
+
+      <div class="sk-grp">
+        <p class="sk-grp-title">Transversal</p>
+        <div class="sk-pills">
+          <span class="pill">Gestion de projet</span><span class="pill">Travail en équipe</span><span class="pill">Management</span><span class="pill">Autonomie</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="s-projects">
+    <p class="sec-lbl">03 — Projets</p>
+    <h2 class="sec-h">Ce que j'ai<br><em>construit.</em></h2>
+    <div class="pj-list">
+      <div class="pj">
+        <span class="pj-n">01</span>
+        <div>
+          <div class="pj-tags"><span class="pjtag hi">Proof of Concept</span><span class="pjtag hi">FPGA</span><span class="pjtag hi">IA Embarquée</span><span class="pjtag">NKAD Printers</span></div>
+          <p class="pj-t">Système embarqué impression 3D métal</p>
+          <p class="pj-d">ALINX AXU2CGB — analyse laser temps réel, caméras thermiques, G-code par IA. Modèle de classification déployé directement sur FPGA.</p>
+        </div>
+      </div>
+      <div class="pj">
+        <span class="pj-n">02</span>
+        <div>
+          <div class="pj-tags"><span class="pjtag hi">FPGA</span><span class="pjtag hi">Machine Learning</span><span class="pjtag">Python · VHDL</span></div>
+          <p class="pj-t">Inférence IA sur FPGA</p>
+          <p class="pj-d">Pipeline complet entraînement → déploiement hardware. Optimisation des modèles pour contraintes temps réel embarquées.</p>
+        </div>
+      </div>
+      <div class="pj">
+        <span class="pj-n">03</span>
+        <div>
+          <div class="pj-tags"><span class="pjtag hi">Raspberry Pi</span><span class="pjtag hi">Python</span><span class="pjtag">RFID · Vision</span></div>
+          <p class="pj-t">RFID + Reconnaissance faciale</p>
+          <p class="pj-d">Contrôle d'accès combinant badge RFID et vision par ordinateur sur Raspberry Pi — intégration bas niveau complète.</p>
+        </div>
+      </div>
+      <div class="pj">
+        <span class="pj-n">04</span>
+        <div>
+          <div class="pj-tags"><span class="pjtag hi">STM32</span><span class="pjtag hi">C · Assembleur</span></div>
+          <p class="pj-t">Développement bas niveau STM32</p>
+          <p class="pj-d">Périphériques, interruptions, DMA — optimisation sur systèmes contraints en C et assembleur.</p>
+        </div>
+      </div>
+      <div class="pj">
+        <span class="pj-n">05</span>
+        <div>
+          <div class="pj-tags"><span class="pjtag hi">Java</span><span class="pjtag">Projet complet</span></div>
+          <p class="pj-t">Jeu vidéo complet en Java</p>
+          <p class="pj-d">Moteur de jeu, physique, gestion d'états, interface graphique et système de score — développé intégralement.</p>
+        </div>
+      </div>
+      <div class="pj" style="opacity:0.4">
+        <span class="pj-n">06</span>
+        <div>
+          <div class="pj-tags"><span class="pjtag">À venir</span><span class="pjtag">DevOps · Cloud</span></div>
+          <p class="pj-t">Projet DevOps / Cloud</p>
+          <p class="pj-d">Docker, CI/CD, AWS, Terraform, Kubernetes. En cours de réalisation.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="s-contact">
+    <p class="sec-lbl">04 — Contact</p>
+    <h2 class="sec-h">Travaillons<br><em>ensemble.</em></h2>
+    <div class="ct-wrap">
+      <p class="ct-intro">Disponible pour des postes juniors en systèmes embarqués, DevOps/Cloud ou data/IA en Île-de-France. Réponse garantie sous 24h.</p>
+      <div class="ct-links">
+        <a href="mailto:votre.email@example.com" class="ctlink">votre.email@example.com <span>↗</span></a>
+        <a href="https://linkedin.com/in/votre-profil" target="_blank" class="ctlink">LinkedIn <span>↗</span></a>
+      </div>
+      <form class="cf" onsubmit="s4(event)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="cfg"><label class="cfl">Nom</label><input class="cfi" type="text" required placeholder="Jean Dupont"></div>
+          <div class="cfg"><label class="cfl">Email</label><input class="cfi" type="email" required placeholder="jean@co.fr"></div>
+        </div>
+        <div class="cfg"><label class="cfl">Sujet</label><input class="cfi" type="text" placeholder="Opportunité ingénieur embarqué"></div>
+        <div class="cfg"><label class="cfl">Message</label><textarea class="cft" required placeholder="Votre message..."></textarea></div>
+        <button type="submit" class="cfbtn">Envoyer le message →</button>
+      </form>
+      <div id="ok4">✓ Message envoyé ! Je vous répondrai rapidement.</div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="ft-line">© 2025 Prénom NOM · Ingénieur ENSEA · Île-de-France</p>
+  </footer>
+
+</main>
+
+<script>
+function loadPhoto(e){
+  const file = e.target.files[0];
+  if(!file) return;
+  const reader = new FileReader();
+  reader.onload = function(ev){
+    const img = document.getElementById('avatar-img');
+    const initials = document.querySelector('.sb-avatar-initials');
+    img.src = ev.target.result;
+    img.style.display = 'block';
+    initials.style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function scrollTo(id){
+  const el = document.getElementById(id);
+  if(el) el.scrollIntoView({behavior:'smooth'});
+}
+
+const links = document.querySelectorAll('.sb-link');
+const secs = document.querySelectorAll('.sec');
+const mainEl = document.getElementById('main-scroll');
+
+mainEl.addEventListener('scroll',()=>{
+  let cur = 0;
+  secs.forEach((s,i)=>{
+    if(s.getBoundingClientRect().top <= mainEl.clientHeight/2) cur=i;
+  });
+  links.forEach(l=>l.classList.remove('active'));
+  if(links[cur]) links[cur].classList.add('active');
+});
+
+function s4(e){e.preventDefault();e.target.style.display='none';document.getElementById('ok4').style.display='block'}
+</script>
+</body>
+</html>
