@@ -296,6 +296,29 @@ form.cf{display:flex;flex-direction:column;gap:0}
 footer{padding:4rem 3.5rem 3rem;border-top:1px solid var(--border)}
 .ft-line{font-family:var(--mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.04em}
 
+/* ABOUT TWO COL */
+.about-two-col{display:grid;grid-template-columns:2fr 1fr;gap:4rem;align-items:start}
+.about-right-col{position:sticky;top:2rem;border-left:1px solid var(--border);padding-left:2rem}
+.tl-header{font-family:var(--mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.5rem}
+.about-meta{margin-top:2rem;display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border)}
+.am-item{display:flex;justify-content:space-between;align-items:baseline;padding:0.7rem 0;border-bottom:1px solid var(--border)}
+.am-k{font-family:var(--mono);font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+.am-v{font-size:0.82rem;color:var(--text)}
+.am-v a{color:var(--accent);text-decoration:none}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:1.5rem}
+.timeline::before{content:'';position:absolute;left:0;top:8px;bottom:0;width:1px;background:var(--border)}
+.tl-item{position:relative;padding-bottom:1.75rem}
+.tl-item:last-child{padding-bottom:0}
+.tl-dot{position:absolute;left:-1.65rem;top:6px;width:7px;height:7px;border-radius:50%;background:var(--bg);border:1px solid var(--muted);transition:background 0.2s,border-color 0.2s}
+.tl-item:hover .tl-dot{background:var(--accent);border-color:var(--accent)}
+.tl-date{font-family:var(--mono);font-size:0.58rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;display:block;margin-bottom:0.25rem}
+.tl-title{font-size:0.9rem;color:var(--text);font-weight:500;margin-bottom:0.2rem}
+.tl-sub{font-size:0.78rem;color:var(--muted);margin-bottom:0.45rem;line-height:1.5}
+.tl-tag{font-family:var(--mono);font-size:0.56rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.15rem 0.45rem;border:1px solid var(--border);color:var(--muted);border-radius:2px}
+.tl-tag[data-type="Alternance"]{border-color:var(--accent);color:var(--accent);background:var(--accent-l)}
+
 @media(max-width:900px){
   html,body{overflow:auto;height:auto;display:block}
   .sidebar{width:100%;height:auto;min-height:auto;flex-direction:row;flex-wrap:wrap;gap:1rem;padding:1.5rem;position:static}
@@ -307,7 +330,96 @@ footer{padding:4rem 3.5rem 3rem;border-top:1px solid var(--border)}
   .main{height:auto;overflow:visible}
   .sec{min-height:auto;padding:4rem 1.5rem}
   .ab-facts{grid-template-columns:1fr}
+  .about-two-col{grid-template-columns:1fr}
+  .about-right-col{position:static;border-left:none;padding-left:0;border-top:1px solid var(--border);padding-top:2rem}
 }
+
+/* TIMELINE */
+.timeline {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-top: 1rem;
+}
+
+/* La ligne verticale */
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border);
+}
+
+.tl-item {
+  position: relative;
+  padding-bottom: 2rem;
+}
+
+.tl-item:last-child {
+  padding-bottom: 0;
+}
+
+/* Le point sur la ligne */
+.tl-dot {
+  position: absolute;
+  left: -1.85rem;
+  top: 5px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 1px solid var(--muted);
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.tl-item:hover .tl-dot {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.tl-date {
+  font-family: var(--mono);
+  font-size: 0.6rem;
+  color: var(--muted);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.tl-title {
+  font-size: 0.95rem;
+  color: var(--text);
+  font-weight: 500;
+  margin-bottom: 0.2rem;
+}
+
+.tl-sub {
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin-bottom: 0.5rem;
+  line-height: 1.5;
+}
+
+.tl-tag {
+  font-family: var(--mono);
+  font-size: 0.58rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.18rem 0.5rem;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  border-radius: 2px;
+}
+
+.tl-tag:is([data-type="Alternance"]) {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-l);
+}
+
 </style>
 </head>
 <body>
@@ -358,22 +470,67 @@ footer{padding:4rem 3.5rem 3rem;border-top:1px solid var(--border)}
     </div>
   </section>
 
-  <section class="sec" id="s-about">
+<section class="sec" id="s-about">
     <p class="sec-lbl">01 — À propos</p>
     <h2 class="sec-h">Du silicium<br><em>à l'intelligence.</em></h2>
-    <div class="ab-grid">
-      <p class="ab-p">Diplômé de <strong>l'ENSEA</strong>, spécialisé en systèmes embarqués complexes. Mon Proof of Concept chez <strong>NKAD Printers</strong> : un système embarqué d'impression 3D métal sur carte FPGA ALINX, analyse laser temps réel, caméras thermiques, G-code généré par IA, et modèle ML déployé directement sur FPGA.</p>
-      <p class="ab-p">J'ai également développé des compétences en développement <strong>web, mobile Android, Java, et Raspberry Pi</strong>, et je développe actuellement une application mobile.</p>
-      <p class="ab-p">Aujourd'hui je suis à la recherche d'une opportunité professionnelle dans un <strong>environnement</strong> et un <strong>projet innovant</strong>.</p>
-      <div class="ab-facts">
-        <div class="af"><p class="af-k">Formation</p><p class="af-v">2022-2025 :<br><strong>Diplôme Ingénieur ENSEA</strong> · Cergy<br>
-          <br>2020-2022 :<br><strong>DUT GEII, CY Paris Université</strong> · Neuville-Sur-Oise</p></br></div> 
-        <div class="af"><p class="af-k">Alternance</p><p class="af-v">2022-2025 :<br><strong>NKAD Printers</strong> · Buchelay</p></div>
-        <div class="af"><p class="af-k">Stage 8 semaines</p><p class="af-v">2020 : <br><strong>ECAM-EPMI</strong> · Cergy</p></div>
-        <div class="af"><p class="af-k">Langues</p><p class="af-v">Français · Anglais (TOEIC 940)</p></div>
-        <div class="af"><p class="af-k">Localisation</p><p class="af-v">Île-de-France</p></div>
-        <div class="af"><p class="af-k">LinkedIn</p><p class="af-v"><a href="#">x x ↗</a></p></div>
+    <div class="about-two-col">
+
+      <!-- GAUCHE : texte -->
+      <div class="about-left-col">
+        <p class="ab-p">Ingénieur ENSEA spécialisé en systèmes embarqués, je navigue aussi bien dans la <strong>conception hardware et le bas niveau</strong> — VHDL, C, assembleur — que dans les <strong>couches applicatives</strong> en Python et au-delà.</p>
+        <p class="ab-p">Mon projet le plus représentatif : un <strong>système d'impression 3D métal</strong> développé chez NKAD Printers, de la conception FPGA ALINX à <strong>l'inférence IA embarquée</strong>, en passant par l'analyse laser temps réel et les caméras thermiques. Un projet de bout en bout, du signal physique à la décision algorithmique.</p>
+        <p class="ab-p">En parallèle, j'ai développé des compétences en <strong>web, mobile Android et Raspberry Pi</strong>, et je développe actuellement une <strong>application mobile</strong>. Cette curiosité technologique est aussi de l'adaptabilité : je monte rapidement en compétence sur de nouveaux outils, de nouveaux environnements, de nouveaux problèmes.</p>
+        <p class="ab-p">Je cherche aujourd'hui une opportunité dans un <strong>environnement technique exigeant</strong>, sur un projet où il y a de vrais problèmes à résoudre.</p>
+        <div class="about-meta">
+          <div class="am-item"><span class="am-k">Langues</span><span class="am-v">Français · Anglais (TOEIC 940)</span></div>
+          <div class="am-item"><span class="am-k">Localisation</span><span class="am-v">Île-de-France</span></div>
+          <div class="am-item"><span class="am-k">LinkedIn</span><span class="am-v"><a href="#">Voir le profil ↗</a></span></div>
+        </div>
       </div>
+
+      <!-- DROITE : timeline -->
+      <div class="about-right-col">
+        <p class="tl-header">Parcours</p>
+        <div class="timeline">
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <span class="tl-date">2022 — 2025</span>
+              <p class="tl-title">Diplôme Ingénieur ENSEA</p>
+              <p class="tl-sub">Systèmes Embarqués & FPGA · Cergy</p>
+              <span class="tl-tag">Formation</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <span class="tl-date">2022 — 2025</span>
+              <p class="tl-title">NKAD Printers</p>
+              <p class="tl-sub">Développeur FPGA · Buchelay</p>
+              <span class="tl-tag" data-type="Alternance">Alternance</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <span class="tl-date">2020 — 2022</span>
+              <p class="tl-title">DUT GEII</p>
+              <p class="tl-sub">CY Paris Université · Neuville-sur-Oise</p>
+              <span class="tl-tag">Formation</span>
+            </div>
+          </div>
+          <div class="tl-item">
+            <div class="tl-dot"></div>
+            <div class="tl-content">
+              <span class="tl-date">2020 · 8 semaines</span>
+              <p class="tl-title">ECAM-EPMI</p>
+              <p class="tl-sub">Développeur logiciel · Cergy</p>
+              <span class="tl-tag">Stage</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
