@@ -59,9 +59,8 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:
 
 /* SECTIONS — par défaut flex column */
 .sec{
-  padding:4rem 3.5rem;
+  padding:3rem 3.5rem;
   border-bottom:1px solid var(--border);
-  min-height:100vh;
   display:flex;
   flex-direction:column;
   justify-content:center;
@@ -74,25 +73,86 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:
 }
 
 /* HERO */
-.hero-identity{display:flex;align-items:center;gap:1.75rem;padding-bottom:2.5rem;border-bottom:1px solid var(--border);}
-.hero-avatar{width:80px;height:80px;border-radius:50%;background:var(--text);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;flex-shrink:0;}
-.hero-avatar-initials{font-family:var(--serif);font-size:1.6rem;font-weight:400;font-style:italic;color:rgba(255,255,255,0.75);user-select:none;}
-.hero-avatar-img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;display:none;}
-.hero-avatar-ring{position:absolute;inset:-4px;border-radius:50%;border:1px solid var(--border);pointer-events:none;}
-.hero-id-text{}
-.hero-name-big{font-family:var(--serif);font-size:1.9rem;font-weight:400;line-height:1.15;letter-spacing:-0.02em;margin-bottom:0.3rem;}
-.hero-name-big em{font-style:italic;color:var(--accent)}
-.hero-role-line{font-family:var(--mono);font-size:0.62rem;color:var(--muted);letter-spacing:0.08em;text-transform:uppercase;margin-bottom:0.65rem;}
-.hero-badge-dispo{display:inline-flex;align-items:center;gap:0.4rem;border:1px solid var(--accent);border-radius:2px;padding:0.2rem 0.6rem;font-family:var(--mono);font-size:0.58rem;color:var(--accent);letter-spacing:0.06em;background:var(--accent-l);}
-.hero-badge-dispo::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
-#s-hero{background:var(--bg);justify-content:flex-end;padding-bottom:4rem}
-.hero-tag{font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:1.75rem;}
-.hero-h{font-family:var(--serif);font-size:clamp(3rem,5.5vw,5rem);font-weight:400;line-height:1.05;letter-spacing:-0.02em;margin-bottom:2.5rem;}
-.hero-h em{font-style:italic;color:var(--accent)}
-.hero-desc{font-size:1rem;color:var(--muted);max-width:48ch;line-height:1.8;margin-bottom:3rem;}
-.hero-chips{display:flex;gap:0.5rem;flex-wrap:wrap}
-.hchip{font-family:var(--mono);font-size:0.6rem;padding:0.3rem 0.65rem;border:1px solid var(--border);color:var(--muted);letter-spacing:0.06em;border-radius:2px;}
-.hchip.green{border-color:var(--accent);color:var(--accent);background:var(--accent-l)}
+#s-hero{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:4rem 3.5rem;
+  gap:1.25rem;
+}
+.hero-status{
+  display:inline-flex;align-items:center;gap:0.5rem;
+  font-family:var(--mono);font-size:0.62rem;color:var(--accent);
+  letter-spacing:0.1em;text-transform:uppercase;
+  border:1px solid rgba(45,90,39,0.25);
+  background:var(--accent-l);
+  padding:0.25rem 0.75rem;border-radius:2px;
+}
+.hero-dot{width:5px;height:5px;border-radius:50%;background:var(--accent);flex-shrink:0}
+
+.hero-avatar{
+  width:88px;height:88px;border-radius:50%;
+  background:var(--text);
+  border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;overflow:hidden;flex-shrink:0;
+}
+.hero-avatar-initials{
+  font-family:var(--serif);font-size:1.6rem;font-weight:400;font-style:italic;
+  color:rgba(255,255,255,0.75);user-select:none;
+}
+.hero-avatar-img{
+  width:100%;height:100%;object-fit:cover;
+  position:absolute;inset:0;display:none;
+}
+
+.hero-name-big{
+  font-family:var(--serif);
+  font-size:clamp(2.8rem,6vw,5.5rem);
+  font-weight:400;line-height:1.0;
+  letter-spacing:-0.03em;
+}
+.hero-name-big em{
+  font-style:italic;color:var(--accent);
+  display:inline;margin-left:0.2em;
+}
+
+.hero-role-line{
+  font-family:var(--mono);font-size:0.65rem;color:var(--muted);
+  letter-spacing:0.1em;text-transform:uppercase;
+  line-height:1.7;
+}
+
+.hero-divider{
+  width:2rem;height:1px;background:var(--border);
+}
+
+.hero-chips{display:flex;gap:0.5rem;flex-wrap:wrap;justify-content:center}
+.hchip{
+  font-family:var(--mono);font-size:0.6rem;
+  padding:0.3rem 0.65rem;border:1px solid var(--border);
+  color:var(--muted);letter-spacing:0.06em;border-radius:2px;
+  transition:border-color 0.2s,color 0.2s;
+}
+.hchip:hover{border-color:var(--text);color:var(--text)}
+
+.hero-actions{display:flex;gap:0.75rem;flex-wrap:wrap;align-items:center;justify-content:center}
+.hero-btn-primary{
+  font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;
+  padding:0.65rem 1.5rem;background:var(--text);color:var(--bg);
+  border:none;border-radius:3px;text-decoration:none;
+  transition:opacity 0.2s;
+}
+.hero-btn-primary:hover{opacity:0.75}
+.hero-btn-ghost{
+  font-family:var(--mono);font-size:0.7rem;letter-spacing:0.06em;
+  padding:0.65rem 1.5rem;background:transparent;color:var(--text);
+  border:1px solid var(--border);border-radius:3px;text-decoration:none;
+  transition:border-color 0.2s;
+}
+.hero-btn-ghost:hover{border-color:var(--text)}
 
 /* LABELS */
 .sec-lbl{font-family:var(--mono);font-size:0.65rem;color:var(--muted);letter-spacing:0.15em;text-transform:uppercase;display:flex;align-items:center;gap:0.75rem;margin-bottom:1.5rem;}
@@ -153,15 +213,21 @@ body{background:var(--bg);color:var(--text);font-family:var(--sans);font-weight:
 .pill.strong{border-color:var(--accent);color:var(--accent);background:var(--accent-l);font-weight:500;}
 
 /* PROJECTS */
-.pj-list{display:flex;flex-direction:column;gap:0;max-width:700px}
-.pj{padding:1.75rem 0;border-bottom:1px solid var(--border);display:grid;grid-template-columns:44px 1fr;gap:1.5rem;cursor:default;transition:padding 0.15s;}
-.pj:first-child{border-top:1px solid var(--border)}
-.pj:hover{padding-left:0.5rem}
-.pj-n{font-family:var(--mono);font-size:0.62rem;color:var(--muted);padding-top:0.2rem}
-.pj-tags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.5rem}
-.pjtag{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.15rem 0.45rem;border:1px solid var(--border);color:var(--muted);}
+.pj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.pj-card{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:var(--bg);transition:border-color 0.2s;cursor:default}
+.pj-card:hover{border-color:var(--muted)}
+.pj-card.soon{opacity:0.4}
+.pj-card-img{width:100%;height:160px;overflow:hidden;background:var(--bg2);display:flex;gap:0}
+.pj-card-img img{width:50%;height:100%;object-fit:cover;flex-shrink:0}
+.pj-card-img img:only-child{width:100%}
+.pj-card-img-placeholder{width:100%;height:100%;background:var(--bg2);display:flex;align-items:center;justify-content:center;font-family:var(--mono);font-size:0.6rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase}
+.pj-card-body{padding:1.25rem}
+.pj-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:0.75rem}
+.pj-card-num{font-family:var(--mono);font-size:0.6rem;color:var(--muted);letter-spacing:0.05em}
+.pj-tags{display:flex;gap:0.35rem;flex-wrap:wrap;margin-bottom:0.6rem}
+.pjtag{font-family:var(--mono);font-size:0.55rem;letter-spacing:0.08em;text-transform:uppercase;padding:0.15rem 0.45rem;border:1px solid var(--border);color:var(--muted)}
 .pjtag.hi{border-color:var(--accent);color:var(--accent)}
-.pj-t{font-family:var(--serif);font-size:1.1rem;font-weight:400;margin-bottom:0.4rem}
+.pj-t{font-family:var(--serif);font-size:1.05rem;font-weight:400;margin-bottom:0.4rem;line-height:1.25}
 .pj-d{font-size:0.82rem;color:var(--muted);line-height:1.65}
 
 /* CONTACT */
@@ -193,7 +259,6 @@ footer{padding:4rem 3.5rem 3rem;border-top:1px solid var(--border)}
   .sb-bottom{margin-top:0}
   .sb-cv,.sb-logo{display:none}
   .main{height:auto;overflow:visible}
-  .sec{min-height:auto;padding:4rem 1.5rem}
   #s-skills{padding:4rem 1.5rem}
   .about-two-col{grid-template-columns:1fr}
   .about-right-col{position:static;border-left:none;padding-left:0;border-top:1px solid var(--border);padding-top:2rem}
@@ -205,6 +270,7 @@ footer{padding:4rem 3.5rem 3rem;border-top:1px solid var(--border)}
   .tl-row{padding-left:1.5rem}
   .tl-mid{left:0;transform:none}
   .sk-outer{grid-template-columns:1fr}
+  .pj-grid{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -230,28 +296,34 @@ footer{padding:4rem 3.5rem 3rem;border-top:1px solid var(--border)}
 <main class="main" id="main-scroll">
 
   <section class="sec" id="s-hero">
-    <div class="hero-identity">
-      <div class="hero-avatar">
-        <span class="hero-avatar-initials">A JCV</span>
-        <img class="hero-avatar-img" id="avatar-img" src="" alt="Photo de profil">
-        <div class="hero-avatar-ring"></div>
-      </div>
-      <div class="hero-id-text">
-        <h1 class="hero-name-big">X <em>X</em></h1>
-        <p class="hero-role-line">Ingénieur Systèmes Embarqués / Electronique / Informatique · ENSEA · Île-de-France</p>
-        <span class="hero-badge-dispo">Disponible immédiatement</span>
-      </div>
+
+    <div class="hero-avatar">
+      <span class="hero-avatar-initials">PN</span>
+      <img class="hero-avatar-img" id="avatar-img" src="" alt="Photo de profil">
     </div>
-    
-    <h2 class="hero-h">Ingénieur<br><em>ENSEA</em></h2>
-    <p class="hero-desc">Spécialisé en systèmes embarqués complexes, avec une expérience pratique sur FPGA, VHDL, Linux embarqué et IA embarquée. Passionné par la création de solutions innovantes à l'intersection du matériel et du logiciel.</p>
+
+    <h1 class="hero-name-big">Prénom <em>NOM</em></h1>
+
+    <p class="hero-role-line">Ingénieur Systèmes Embarqués · ENSEA · Île-de-France</p>
+    <span class="hero-status"><span class="hero-dot"></span>Disponible immédiatement</span>
+
+    <div class="hero-divider"></div>
+
     <div class="hero-chips">
       <span class="hchip">FPGA / VHDL</span>
       <span class="hchip">C / C++ / Python</span>
       <span class="hchip">Linux Embarqué</span>
       <span class="hchip">IA Embarquée</span>
-      <span class="hchip">Île-de-France</span>
+      <span class="hchip">STM32</span>
+      <span class="hchip">Raspberry Pi</span>
     </div>
+
+    <div class="hero-actions">
+      <a href="#s-projects" class="hero-btn-primary" onclick="scrollTo('s-projects')">Mes réalisations →</a>
+      <a href="#s-contact" class="hero-btn-ghost" onclick="scrollTo('s-contact')">Me contacter</a>
+      <a href="#" class="hero-btn-ghost">CV PDF ↗</a>
+    </div>
+
   </section>
 
   <section class="sec" id="s-about">
@@ -400,74 +472,109 @@ footer{padding:4rem 3.5rem 3rem;border-top:1px solid var(--border)}
           <span class="pill">Gestion de projet</span>
           <span class="pill">Travail en équipe</span>
           <span class="pill">Autonomie</span>
-          <span class="pill">Curiosité</span>
           <span class="pill">Résolution de problèmes</span>
-          <span class="pill">Communication technique</span>
-          <span class="pill">Rédaction technique</span>
+          <span class="pill">Communication/Rédaction technique</span>
+          <span class="pill">Modélisation 3D</span>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="sec" id="s-projects">
+<section class="sec" id="s-projects">
     <h2 class="sec-h">Mes<br><em>réalisations</em></h2>
-    <div class="pj-list">
-      <div class="pj">
-        <span class="pj-n">01</span>
-        <div>
-          <div class="pj-tags"><span class="pjtag hi">Proof of Concept</span><span class="pjtag hi">FPGA</span><span class="pjtag hi">IA Embarquée</span><span class="pjtag">NKAD Printers</span></div>
+    <div class="pj-grid">
+
+      <div class="pj-card">
+        <div class="pj-card-img">
+          <img src="images/alinx.jpg" alt="FPGA ALINX">
+          <img src="images/arch_fonctionnelle.png" alt="Architecture">
+        </div>
+        <div class="pj-card-body">
+          <div class="pj-card-top">
+            <div class="pj-tags"><span class="pjtag hi">Proof of Concept</span><span class="pjtag hi">FPGA</span><span class="pjtag hi">IA Embarquée</span><span class="pjtag">NKAD Printers</span></div>
+            <span class="pj-card-num">01</span>
+          </div>
           <p class="pj-t">Système embarqué impression 3D métal</p>
           <p class="pj-d">ALINX AXU2CGB — analyse laser temps réel, caméras thermiques, G-code par IA. Modèle de classification/inférence déployé directement sur FPGA.</p>
-          <div style="display:flex;gap:0.75rem;margin-top:0.75rem">
-            <img src=images/alinx.jpg style="width:50%;border-radius:8px;object-fit:cover">
-            <img src=images/arch_fonctionnelle.png style="width:50%;border-radius:8px;object-fit:contain">
-          </div>
         </div>
       </div>
-      <div class="pj">
-        <span class="pj-n">02</span>
-        <div>
-          <div class="pj-tags"><span class="pjtag hi">STM32</span><span class="pjtag hi">Python</span><span class="pjtag hi">API GPS</span></div>
+
+      <div class="pj-card">
+        <div class="pj-card-img">
+          <img src="images/pres_gps.png" alt="GPS présentation">
+          <img src="images/map_gps.png" alt="Carte GPS">
+        </div>
+        <div class="pj-card-body">
+          <div class="pj-card-top">
+            <div class="pj-tags"><span class="pjtag hi">STM32</span><span class="pjtag hi">Python</span><span class="pjtag hi">API GPS</span></div>
+            <span class="pj-card-num">02</span>
+          </div>
           <p class="pj-t">Suivi GPS Karting</p>
-          <p class="pj-d">Système de suivi GPS pour karting, avec acquisition et traitement de données en temps réel sur STM32, et envoi des données sur PC pour un logiciel Python.</p>
-          <div style="display:flex;gap:0.75rem;margin-top:0.75rem">
-            <img src=images/pres_gps.png style="width:50%;border-radius:8px;object-fit:cover">
-            <img src=images/map_gps.png style="width:50%;border-radius:8px;object-fit:contain">
-          </div>
+          <p class="pj-d">Acquisition et traitement de données GPS en temps réel sur STM32, envoi vers un logiciel Python pour visualisation et analyse.</p>
         </div>
       </div>
-      <div class="pj">
-        <span class="pj-n">03</span>
-        <div>
-          <div class="pj-tags"><span class="pjtag hi">Raspberry Pi</span><span class="pjtag hi">Python</span><span class="pjtag">RFID · Vision</span></div>
+
+      <div class="pj-card">
+        <div class="pj-card-img">
+          <img src="images/cablage_rfid.jpeg" alt="Câblage RFID">
+          <img src="images/logiciel_rfid.png" alt="Logiciel RFID">
+        </div>
+        <div class="pj-card-body">
+          <div class="pj-card-top">
+            <div class="pj-tags"><span class="pjtag hi">Raspberry Pi</span><span class="pjtag hi">Python</span><span class="pjtag">RFID · Vision</span></div>
+            <span class="pj-card-num">03</span>
+          </div>
           <p class="pj-t">RFID + Reconnaissance faciale</p>
           <p class="pj-d">Contrôle d'accès combinant badge RFID et vision par ordinateur sur Raspberry Pi avec une caméra IA embarquée.</p>
-          <div style="display:flex;gap:0.75rem;margin-top:0.75rem">
-            <img src=images/cablage_rfid.jpeg style="width:20%;border-radius:8px;object-fit:cover">
-            <img src=images/logiciel_rfid.png style="width:50%;border-radius:8px;object-fit:contain">
-          </div>
         </div>
       </div>
-      <div class="pj">
-        <span class="pj-n">04</span>
-        <div>
-          <div class="pj-tags"><span class="pjtag hi">PYTHON</span><span class="pjtag hi">TKINTER</span><span class="pjtag">DATA</span><span class="pjtag">Statistiques</span><span class="pjtag">ECAM EPMI</span></div>
+
+      <div class="pj-card">
+        <div class="pj-card-img">
+          <img src="images/interface.png" alt="Interface">
+          <img src="images/signal.png" alt="Signal neuronal">
+        </div>
+        <div class="pj-card-body">
+          <div class="pj-card-top">
+            <div class="pj-tags"><span class="pjtag hi">Python</span><span class="pjtag hi">Tkinter</span><span class="pjtag">Data</span><span class="pjtag">ECAM-EPMI</span></div>
+            <span class="pj-card-num">04</span>
+          </div>
           <p class="pj-t">Analyse de signaux neuronaux</p>
-          <p class="pj-d">Programme en Python pour l'analyse de signaux neuronaux et détecter des maladies. Interface graphique pour visualiser les résultats.</p>
-          <div style="display:flex;gap:0.75rem;margin-top:0.75rem">
-            <img src=images/interface.png style="width:50%;border-radius:8px;object-fit:cover">
-            <img src=images/signal.png style="width:50%;border-radius:8px;object-fit:contain">
+          <p class="pj-d">Programme Python pour l'analyse de signaux neuronaux et détection de maladies. Interface graphique Tkinter pour visualiser les résultats.</p>
+        </div>
+      </div>
+
+      <div class="pj-card">
+        <div class="pj-card-img">
+          <img src="images/holybro.jpg" alt="Drone Holybro">
+          <img src="images/3D_bateau.png" alt="Modélisation 3D bateau">
+        </div>
+        <div class="pj-card-body">
+          <div class="pj-card-top">
+            <div class="pj-tags"><span class="pjtag hi">NKAD</span><span class="pjtag hi">Arduino</span><span class="pjtag hi">Raspberry Pi</span><span class="pjtag hi">Reccherche technique</span><span class="pjtag">Pixhawk</span><span class="pjtag">MissionPlanner/QGroundControl</span><span class="pjtag">DIY</span></div>
+            <span class="pj-card-num">04</span>
           </div>
+          <p class="pj-t">Projets de drones marins/aériens guidés</p>
+          <p class="pj-d">Réalisation de projets de drones marins et aériens autonomes, utilisant des technologies comme Pixhawk, MissionPlanner et QGroundControl. Recherche des composants et assemblements en fonction des dimensions et performances.
+            Impression 3D du bateau, intégration de capteurs et développement de logiciels de contrôle sur Arduino et Raspberry Pi.
+          </p>
         </div>
       </div>
-      <div class="pj" style="opacity:0.4">
-        <span class="pj-n">05</span>
-        <div>
-          <div class="pj-tags"><span class="pjtag">À venir</span><span class="pjtag">APP Mobile</span><span class="pjtag">Flutter</span></div>
-          <p class="pj-t">Projet Application Mobile</p>
-          <p class="pj-d">Suivi GPS, et points d'intérêts. En cours de réalisation.</p>
+
+      <div class="pj-card soon">
+        <div class="pj-card-img">
+          <div class="pj-card-img-placeholder">En cours de réalisation</div>
+        </div>
+        <div class="pj-card-body">
+          <div class="pj-card-top">
+            <div class="pj-tags"><span class="pjtag">À venir</span><span class="pjtag">App Mobile</span><span class="pjtag">Flutter</span></div>
+            <span class="pj-card-num">05</span>
+          </div>
+          <p class="pj-t">Application Mobile</p>
+          <p class="pj-d">Suivi GPS et points d'intérêts. En cours de réalisation.</p>
         </div>
       </div>
+
     </div>
   </section>
 
